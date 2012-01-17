@@ -113,7 +113,7 @@ example::
   Installed source packages need to be appended to
   ``vendor-local/vendor.pth``. See note below. For example::
 
-      echo vendor-local/src/django-piston >> vendor-local/vendor.pth
+      echo src/django-piston >> vendor-local/vendor.pth
       git commit vendor-local/vendor.pth
 
 git-based repositories
@@ -128,7 +128,7 @@ Further, you then need to update ``vendor-local/vendor.pth``. Python uses
 ``.pth`` files to dynamically add directories to ``sys.path`` (`docs
 <http://docs.python.org/library/site.html>`_)::
 
-    echo vendor-local/src/cheeseballs >> vendor-local/vendor.pth
+    echo src/cheeseballs >> vendor-local/vendor.pth
     git commit vendor-local/vendor.pth    
 
 Some packages (like ``html5lib`` and ``selenium``) are troublesome, because
