@@ -114,20 +114,22 @@ example::
   ``vendor-local/vendor.pth``. See note below. For example::
 
       echo vendor-local/src/django-piston >> vendor-local/vendor.pth
-    
+      git commit vendor-local/vendor.pth
+
 git-based repositories
 ~~~~~~~~~~~~~~~~~~~~~~
 
 For a git-based package, add it as a git submodule::
 
     git submodule add git://github.com/mozilla/cheeseballs.git src/cheeseballs
-    git commit vendor.pth .gitmodules src/cheeseballs
+    git commit .gitmodules src/cheeseballs
 
 Further, you then need to update ``vendor-local/vendor.pth``. Python uses
 ``.pth`` files to dynamically add directories to ``sys.path`` (`docs
 <http://docs.python.org/library/site.html>`_).
 
-The file format is simple. Consult ``vendor/vendor.pth`` for reference.
+    echo vendor-local/src/cheeseballs >> vendor-local/vendor.pth
+    git commit vendor-local/vendor.pth    
 
 Some packages (like ``html5lib`` and ``selenium``) are troublesome, because
 their source lives inside an extra subdirectory ``src/`` inside their checkout.
