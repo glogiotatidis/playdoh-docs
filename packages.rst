@@ -15,7 +15,7 @@ of all your dependencies should exist in several places:
 Ultimately your app code will run against the libraries under
 vendor/vendor-local via mod_wsgi.
 
-Why requirements? For developement, you can use virtualenvs and pip to have a 
+Why requirements? For developement, you can use virtualenvs and pip to have a
 tidy self-contained environment. If run from the Django runserver command, you
 don't even need a web server.
 
@@ -63,7 +63,7 @@ compiled.txt vs prod.txt
 ------------------------
 If a Python library requires compilation, it should be recorded in compiled.txt.
 These aren't as portable and cannot be shipped in the vendor library.
-For local development, it's nice to pip install these into a virtualenv. A 
+For local development, it's nice to pip install these into a virtualenv. A
 common practise is to use virtual env **only** for compiled libraries and
 vendor for the rest of your dependencies.
 
@@ -71,8 +71,8 @@ Adding new packages
 -------------------
 
 If we wanted to add a new dependency called ``cheeseballs`` to playdoh, you
-would add it to ``requirements/prod.txt``. If your library isn't used in 
-production, then put it in ``requirements/dev.txt``. This makes it available 
+would add it to ``requirements/prod.txt``. If your library isn't used in
+production, then put it in ``requirements/dev.txt``. This makes it available
 to users installing into virtualenvs.
 
 We also need to add the new package to the vendor-local lib, since that is
@@ -102,7 +102,7 @@ For hg repos that are not on PyPI, they can be installed with pip too
 but omit the ``--home`` option and use the ``--src`` instead. For
 example::
 
-    pip install -I --src='vendor-local/src' \    
+    pip install -I --src='vendor-local/src' \
     -e hg+http://bitbucket.org/jespern/django-piston@default#egg=django-piston
     cd vendor-local
     git add src/django-piston
@@ -114,20 +114,22 @@ example::
   ``vendor-local/vendor.pth``. See note below. For example::
 
       echo src/django-piston >> vendor-local/vendor.pth
-    
+      git commit vendor-local/vendor.pth
+
 git-based repositories
 ~~~~~~~~~~~~~~~~~~~~~~
 
 For a git-based package, add it as a git submodule::
 
-    git submodule add git://github.com/mozilla/cheeseballs.git src/cheeseballs
-    git commit vendor.pth .gitmodules src/cheeseballs
+    git submodule add git://github.com/mozilla/cheeseballs.git vendor-local/src/cheeseballs
+    git commit .gitmodules vendor-local/src/cheeseballs
 
 Further, you then need to update ``vendor-local/vendor.pth``. Python uses
 ``.pth`` files to dynamically add directories to ``sys.path`` (`docs
-<http://docs.python.org/library/site.html>`_).
+<http://docs.python.org/library/site.html>`_)::
 
-The file format is simple. Consult ``vendor/vendor.pth`` for reference.
+    echo src/cheeseballs >> vendor-local/vendor.pth
+    git commit vendor-local/vendor.pth
 
 Some packages (like ``html5lib`` and ``selenium``) are troublesome, because
 their source lives inside an extra subdirectory ``src/`` inside their checkout.
@@ -140,7 +142,7 @@ it worked.
 Testing Your Vendor Change
 --------------------------
 It's critical that you test your app running under mod_wsgi. Although you
-may use runserver day to day, go ahead and run some code through WSGI to 
+may use runserver day to day, go ahead and run some code through WSGI to
 prove vendor is setup properly. (throw an import into your view, etc)
 
 Advanced Topics
