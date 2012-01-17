@@ -113,7 +113,7 @@ example::
   Installed source packages need to be appended to
   ``vendor-local/vendor.pth``. See note below. For example::
 
-      echo src/django-piston >> vendor-local/vendor.pth
+      echo vendor-local/src/django-piston >> vendor-local/vendor.pth
     
 git-based repositories
 ~~~~~~~~~~~~~~~~~~~~~~
