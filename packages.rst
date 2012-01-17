@@ -126,7 +126,7 @@ For a git-based package, add it as a git submodule::
 
 Further, you then need to update ``vendor-local/vendor.pth``. Python uses
 ``.pth`` files to dynamically add directories to ``sys.path`` (`docs
-<http://docs.python.org/library/site.html>`_).
+<http://docs.python.org/library/site.html>`_)::
 
     echo vendor-local/src/cheeseballs >> vendor-local/vendor.pth
     git commit vendor-local/vendor.pth    
