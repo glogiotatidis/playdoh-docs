@@ -120,7 +120,6 @@ git-based repositories
 
 For a git-based package, add it as a git submodule::
 
-    cd vendor-local
     git submodule add git://github.com/mozilla/cheeseballs.git src/cheeseballs
     git commit vendor.pth .gitmodules src/cheeseballs
 
