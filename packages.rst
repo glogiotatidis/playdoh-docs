@@ -121,8 +121,8 @@ git-based repositories
 
 For a git-based package, add it as a git submodule::
 
-    git submodule add git://github.com/mozilla/cheeseballs.git src/cheeseballs
-    git commit .gitmodules src/cheeseballs
+    git submodule add git://github.com/mozilla/cheeseballs.git vendor-local/src/cheeseballs
+    git commit .gitmodules vendor-local/src/cheeseballs
 
 Further, you then need to update ``vendor-local/vendor.pth``. Python uses
 ``.pth`` files to dynamically add directories to ``sys.path`` (`docs
