@@ -39,8 +39,6 @@ Deployment
 
 * `django-waffle <https://github.com/jsocol/django-waffle>`_:
   A feature flipper for Django.
-* `django-arecibo <https://github.com/andymckay/django-arecibo>`_\*:
-  Track the errors on your website in a database.
 
 Internationalization (i18n) and Localization (L10n)
 ---------------------------------------------------
